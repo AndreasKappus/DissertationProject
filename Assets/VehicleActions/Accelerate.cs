@@ -21,17 +21,24 @@ public class Accelerate : Actions {
             Vehicle.currentSpeed = 2 * Mathf.PI * Vehicle.FL_wheel.radius * Vehicle.FL_wheel.rpm; // speed = 2 * 3.14 * radius of wheel * revs per minute
             Vehicle.FL_wheel.motorTorque = Vehicle.maxMotorTorque;
             Vehicle.FR_wheel.motorTorque = Vehicle.maxMotorTorque;
+            Vehicle.FL_wheel.brakeTorque = 0;
+            Vehicle.FR_wheel.brakeTorque = 0;
+
         }
         else if(!Vehicle.isBraking && Vehicle.avoiding)
         {
-            Vehicle.currentSpeed = -10; // speed = 2 * 3.14 * radius of wheel * revs per minute
-            Vehicle.FL_wheel.motorTorque = -10;
-            Vehicle.FR_wheel.motorTorque = -10;
+            Vehicle.currentSpeed = -10; 
+            //Vehicle.currentSpeed = 2 * Mathf.PI * Vehicle.FL_wheel.radius * Vehicle.FL_wheel.rpm; // speed = 2 * 3.14 * radius of wheel * revs per minute
+
+            //Vehicle.FL_wheel.motorTorque -= 20;
+            //Vehicle.FR_wheel.motorTorque -= 20;
         }
         else
         {
-            Vehicle.RL_wheel.motorTorque = 0;
-            Vehicle.RR_wheel.motorTorque = 0;
+            Vehicle.FL_wheel.motorTorque = 0;
+            Vehicle.FR_wheel.motorTorque = 0;
+            Vehicle.FL_wheel.brakeTorque = 100;
+            Vehicle.FR_wheel.brakeTorque = 100;
         }
         
     }

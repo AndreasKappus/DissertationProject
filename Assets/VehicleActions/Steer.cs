@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class Steer : Actions {
 
+    private SensorManager sensors;
+
     public Steer(Vehicle _Vehicle) : base(_Vehicle)
     {
     }
 
+
     public override void doAction()
     {
+        
         if (Vehicle.avoiding) // avoiding is set to true when the raycast hits an object
         {
             Vehicle.FL_wheel.steerAngle = Vehicle.maxSteerAngle * Vehicle.avoid;
             Vehicle.FR_wheel.steerAngle = Vehicle.maxSteerAngle * Vehicle.avoid;
-            Vehicle.currentSpeed--;
+            
 
         }
         else

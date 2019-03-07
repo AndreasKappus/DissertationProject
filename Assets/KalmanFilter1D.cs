@@ -23,12 +23,6 @@ public class KalmanFilter1D : MonoBehaviour {
         float sig = 1000; // initial uncertainty
         float sensor_measurements_y = sensorNoise(car.position.z);
         noise -= 0.001f;
-        //kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig);
-        //kalmanPredict(mu, sig, motion, motion_sig);
-
-        //Debug.Log(kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig));
-        //Debug.Log(kalmanPredict(mu, sig, motion, motion_sig));
-
 
         location_x.text = kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig).ToString();
         location_y.text = kalmanUpdate(mu, sig, sensor_measurements_y, measurement_sig).ToString();
@@ -40,7 +34,7 @@ public class KalmanFilter1D : MonoBehaviour {
     public float sensorNoise(float pos)
     {
         // TODO: 
-        //create variable for the range, loop it and subtract 0.001 through each iteration to get a lower range for a more accurate reading
+        //create variable for the range, loop it and subtract 0.001 through each iteration to get a lower range for a more accurate reading or do the subtraction in update
 
         
 
