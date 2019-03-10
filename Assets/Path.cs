@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Path : MonoBehaviour {
 
-    public Color linecolour;
     private List<Transform> nodes = new List<Transform>();
-
+    
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = linecolour;
         Transform[] paths = GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
-
+        
         for(int i = 0; i <paths.Length; i++)
         {
             if(paths[i] != transform)
@@ -34,7 +32,8 @@ public class Path : MonoBehaviour {
             {
                 prevNode = nodes[nodes.Count - 1].position;
             }
-            Gizmos.DrawLine(prevNode, currentNode); // doesnt work so change this
+            Gizmos.DrawLine(prevNode, currentNode); 
         }
     }
+    
 }

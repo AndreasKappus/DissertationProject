@@ -1,28 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewKFilter : Actions {
+public class KalmanFilter1D : MonoBehaviour {
+
+    public Text location_x;
+    public Text location_y;
 
     // public List<float> velocity_measurements = new List<float>();
     public float noise = 10;
+    public Rigidbody car;
 
-    public NewKFilter(Vehicle _Vehicle) : base(_Vehicle)
-    {
+    // Update is called once per frame
+    void FixedUpdate() {
+        
+        float mu = 0; // mean uncertainty
+        float motion = car.velocity.magnitude;
+        float sensor_measurements_x = sensorNoise(car.position.x); // get values from sensor noise method to get the "noisy" measurements
+        float measurement_sig = 4; // measurement uncertainty ( experiment with the "uncertainty" values)
+        float motion_sig = 2; // motion uncertainty
+        float sig = 1000; // initial uncertainty
+        float sensor_measurements_y = sensorNoise(car.position.z);
+        noise -= 0.01f;
+
+        location_x.text = kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig).ToString();
+        location_y.text = kalmanUpdate(mu, sig, sensor_measurements_y, measurement_sig).ToString();
+
     }
-
     
-
-   
-
     // gets position and uses random numbers to replace the pos variable's values through a certain range, so the kalman filter can get the measurements .etc
     public float sensorNoise(float pos)
     {
-        // TODO: 
-        //create variable for the range, loop it and subtract 0.001 through each iteration to get a lower range for a more accurate reading
-
-
-
         // simulate gps sensor noise through random numbers. 
         pos = Random.Range(pos - noise, pos + noise); // The range of the numbers are the actual position - or + 10.
 
@@ -57,20 +66,5 @@ public class NewKFilter : Actions {
         return new_mean;
     }
 
-    public override void doAction()
-    {
-        float mu = 0; // mean uncertainty
-        float motion = Vehicle.car.velocity.magnitude;
-        float sensor_measurements_x = sensorNoise(Vehicle.car.position.x); // get values from sensor noise method to get the "noisy" measurements
-        float measurement_sig = 4; // measurement uncertainty ( experiment with the "uncertainty" values)
-        float motion_sig = 2; // motion uncertainty
-        float sig = 1000; // initial uncertainty
-
-        Debug.Log(kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig));
-        Debug.Log(kalmanPredict(mu, sig, motion, motion_sig));
-        kalmanUpdate(mu, sig, sensor_measurements_x, measurement_sig);
-        kalmanPredict(mu, sig, motion, motion_sig);
-
-        
-    }
+    
 }
