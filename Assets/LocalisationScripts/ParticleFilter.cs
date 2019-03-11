@@ -134,7 +134,7 @@ public class ParticleFilter : MonoBehaviour {
 
         //for (int i = 0; i < n; i++)
         //{
-        //    p.Add(set_noise(0.05f, 0.05f, 0.05f));
+        //    p.add(set_noise(0.05f, 0.05f, 0.05f));
 
         //}
 

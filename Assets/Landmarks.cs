@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Landmarks : MonoBehaviour {
+
+
     private List<Transform> landmark_list = new List<Transform>();
-    // Use this for initialization
+
+
     private void OnDrawGizmosSelected()
     {
         Transform[] landmarks = GetComponentsInChildren<Transform>();
