@@ -43,27 +43,11 @@ public class LandmarkBasedLocalisation : MonoBehaviour {
     {
         float particle_pos_x = 0f;
         float particle_pos_z = 0f;
-        int num_particles = 10;
-
-        Quaternion bearing = new Quaternion();
-
-        //for (int i = 0; i < num_particles; i++)
-        //{
-        //    for (int j = 0; j < landmark_list.Count; j++)
-        //    {
-        //        Vector3 pos = new Vector3(particle_pos_x, 2.1f, particle_pos_z);
-        //        // set range for particle locations between agent position and landmark position
-        //        particle_pos_x = Random.Range(car.position.x, landmark_list[j].position.x);
-        //        particle_pos_z = Random.Range(car.position.z, landmark_list[j].position.z);
-        //        Instantiate(particles, pos, Quaternion.identity);
-
-        //    }
-
-        //}
+        int num_particles = 10;        
 
         for (int i = 0; i < num_particles; i++)
         {
-            Vector3 position = new Vector3(particle_pos_x, 2.1f, particle_pos_z);
+            Vector3 position = new Vector3(particle_pos_x, 5f, particle_pos_z);
             GameObject g_particle;
 
             for (int j = 0; j < landmark_list.Count; j++)
@@ -77,18 +61,11 @@ public class LandmarkBasedLocalisation : MonoBehaviour {
             //particle_list.Add((GameObject)Instantiate(particles, position, Quaternion.identity));
             g_particle = Instantiate(particles, position, Quaternion.identity);
             //particle_list.OrderBy(distance => Vector3.Distance(car.position, particles.transform.position));
-            Destroy(g_particle, 2.0f);
+            Destroy(g_particle, 1.5f);
 
         }
 
     }
-
-
-        public void deleteFarParticles()
-        {
-            
-
-        }
     
 }
 
