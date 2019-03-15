@@ -26,6 +26,7 @@ public class Vehicle : MonoBehaviour {
 
     [Header("Sensors")]
     [HideInInspector] public float shortSensorLength = 1f;
+    [HideInInspector] public float sensor_length = 3f;
     [HideInInspector] public Vector3 frontSensorPos = new Vector3(0.5f, 0.02f, 0f);
     [HideInInspector] public float frontSideSensor = 0.1f;
 

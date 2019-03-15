@@ -15,6 +15,7 @@ public class Steer : Actions {
         
         if (controller.vehicle.avoiding) // avoiding is set to true when the raycast hits an object
         {
+
             controller.vehicle.FL_wheel.steerAngle = controller.vehicle.maxSteerAngle * controller.vehicle.avoid;
             controller.vehicle.FR_wheel.steerAngle = controller.vehicle.maxSteerAngle * controller.vehicle.avoid;
             

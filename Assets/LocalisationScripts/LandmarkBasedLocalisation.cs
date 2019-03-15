@@ -31,8 +31,6 @@ public class LandmarkBasedLocalisation : MonoBehaviour {
     void FixedUpdate() {
 
         generateParticles();
-        //deleteFarParticles();
-
     }
 
 
@@ -43,12 +41,13 @@ public class LandmarkBasedLocalisation : MonoBehaviour {
     {
         float particle_pos_x = 0f;
         float particle_pos_z = 0f;
-        int num_particles = 10;        
+        int num_particles = 10;
+        GameObject g_particle;
 
         for (int i = 0; i < num_particles; i++)
         {
             Vector3 position = new Vector3(particle_pos_x, 5f, particle_pos_z);
-            GameObject g_particle;
+            
 
             for (int j = 0; j < landmark_list.Count; j++)
             {

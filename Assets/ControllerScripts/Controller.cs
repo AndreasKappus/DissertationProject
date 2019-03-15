@@ -56,8 +56,8 @@ public class Controller : MonoBehaviour {
         vehicle.avoiding = false;
 
 
-        // front centre
-        if (Physics.Raycast(startpos, transform.forward, out hit, vehicle.shortSensorLength))
+        // front centre sensor
+        if (Physics.Raycast(startpos, transform.forward, out hit, vehicle.sensor_length))
         {
             if (hit.collider)
             {
@@ -97,7 +97,7 @@ public class Controller : MonoBehaviour {
         // front right sensor
 
         startpos += transform.right * vehicle.frontSideSensor;
-        if (Physics.Raycast(startpos, transform.forward, out hit, vehicle.shortSensorLength))
+        if (Physics.Raycast(startpos, transform.forward, out hit, vehicle.sensor_length))
         {
             if (hit.collider)
             {
@@ -125,7 +125,7 @@ public class Controller : MonoBehaviour {
             vehicle.avoiding = true;
             if (hit.collider)
             {
-                if (hit.normal.x < 0)
+                if (hit.normal.x > 0)
                 {
                     vehicle.avoid += 1f;
                 }
@@ -137,11 +137,5 @@ public class Controller : MonoBehaviour {
             }
         }
 
-        //if (avoiding) // avoiding is set to true when the raycast hits an object
-        //{
-        //    FL_wheel.steerAngle = maxSteerAngle * avoid;
-        //    FR_wheel.steerAngle = maxSteerAngle * avoid;
-
-        //}
     }
 }

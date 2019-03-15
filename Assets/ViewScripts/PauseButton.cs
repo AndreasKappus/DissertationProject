@@ -9,10 +9,7 @@ public class PauseButton : MonoBehaviour {
 	
 	void Start () {
         GetComponent<Button>().onClick.AddListener(Pause);
-        if(Time.timeScale == 0)
-        {
-         
-        }
+        
 	}
 
     private void Pause()
